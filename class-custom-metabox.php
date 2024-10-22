@@ -203,7 +203,9 @@ jQuery(document).ready(function($) {
             case 'all_pages':
                 $pages = get_pages();
                 foreach ($pages as $page) {
-                    $options[$page->ID] = $page->post_title;
+                    // $options[$page->ID] = $page->post_title;
+                    $options[get_permalink($page->ID)] = $page->post_title;
+
                 }
                 break;
             // Add other cases here for different dynamic options if needed
