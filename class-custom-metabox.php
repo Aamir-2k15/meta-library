@@ -20,6 +20,7 @@ class Custom_Metabox {
         add_action('save_post', array($this, 'save_metabox_data'));
         add_action('admin_head', array($this, 'enqueue_metabox_css'));
         add_action('admin_footer', array($this, 'enqueue_metabox_scripts'));
+        
     }
 
     public function register_metabox() {
@@ -52,7 +53,11 @@ class Custom_Metabox {
                 'normal',
                 'high'
             );
+        
+            // Disable both Block Editor and Classic Editor
+            remove_post_type_support($post->post_type, 'editor');
         }
+        
     }
 
     public function metabox_callback($post) {
